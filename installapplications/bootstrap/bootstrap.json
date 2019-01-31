@@ -1,0 +1,62 @@
+{
+  "preflight": [], 
+  "setupassistant": [
+    {
+      "file": "/Library/Application Support/installapplications/trend-munkitools-3.5.2.3637_signed.pkg", 
+      "hash": "891d6549989b59849d4c31b73cfe4d4cd49d5a37d981e26c79a1193669355c98", 
+      "name": "munkitools", 
+      "packageid": "com.googlecode.munki.app", 
+      "type": "package", 
+      "url": "https://mdm-ph.ml/repo/pkg/trend-munkitools-3.5.2.3637_signed.pkg", 
+      "version": "3.5.2.3637"
+    },
+    {
+      "file": "/Library/Application Support/installapplications/DEPNotify-1.1.0.pkg",
+      "hash": "dcfc65469a7895a266b0e8596b6a05a0f0d3507d473550a9efe430863eb39aec",
+      "name": "DEPNotify",
+      "packageid": "menu.nomad.DEPNotify",
+      "type": "package",
+      "url": "https://mdm-ph.ml/repo/pkg/DEPNotify-1.1.0.pkg",
+      "version": "1.1.0"
+    }
+  ], 
+  "userland": [
+	{
+	  "type": "rootscript",
+	  "url": "https://mdm-ph.ml/repo/scripts/caffeinate.py",
+	  "hash": "2f08f540a96222c9f695e2385a887ee575a8f3b8bb080fdeee90282d963e90bb",
+	  "file": "/Library/Application Support/installapplications/caffeinate.py",
+	  "donotwait": true,
+	  "name": "Caffeinate Machine"
+	},
+	{
+	  "type": "rootscript",
+	  "url": "https://mdm-ph.ml/repo/scripts/munki_bootstrap.py",
+	  "hash": "47cf2ef90fa9c30d664dd1b01cfa0752ed44b78edeca5f22a5176587a9f2e323",
+	  "file": "/Library/Application Support/installapplications/munki_bootstrap.py",
+	  "name": "Munki Bootstrap"
+	},
+	{
+  	  "url": "https://mdm-ph.ml/repo/scripts/munki_launchd_loader.py",
+	  "file": "/Library/Application Support/installapplications/munki_launchd_loader.py",
+	  "hash": "954b7cec547dcc4e638991301ba600419e2b6aed15dc09ee412b1ba6218d31af",
+	  "name": "Munki LaunchD Loader",
+	  "type": "rootscript",
+	},
+	{
+	  "url": "https://mdm-ph.ml/repo/scripts/munki_auto_trigger.py",
+	  "file": "/Library/Application Support/installapplications/munki_auto_trigger.py",
+	  "hash": "0ac1bef0c51c3eb2da95418abc691eb1eb02f1096b1ca7d709ffd669f620c13d",
+	  "name": "Munki Auto Trigger",
+	  "donotwait": true,
+	  "type": "rootscript",
+	},
+	{
+	  "url": "https://mdm-ph.ml/repo/scripts/depnotify_end.py",
+	  "file": "/Library/Application Support/installapplications/depnotify_end.py",
+	  "hash": "48e0920a05bf0c207e4714f9d4004a6ea2eab9103ce57821f2e619a629d8c7ca",
+	  "name": "DEPNotify End",
+	  "type": "rootscript",
+	}
+  ]
+}
