@@ -1,0 +1,66 @@
+#!/bin/bash
+
+# Script that runs following an install of PH Office munkitools pkg
+# Sets various defaults on the client
+
+# Set Prefs Plist
+
+MUNKI_PREFS="/Library/Preferences/ManagedInstalls"
+
+# Set Root Plist
+
+ROOT_PREFS="/private/var/root/Library/Preferences/ManagedInstalls"
+
+# Set Log dir
+
+LOGDIR="/private/var/log/munki"
+
+# Get UUID for client identifier
+
+UUID=$(system_profiler SPHardwareDataType | awk '/UUID/ { print $3; }')
+
+
+#Change your repo to point to Munki Repo VM.
+
+sudo defaults write /Library/Preferences/ManagedInstalls SoftwareRepoURL  "INSERT REPO URL HERE"
+
+# Set client identifier to be UUID
+
+defaults write /Library/Preferences/ManagedInstalls ClientIdentifier "mdm"
+
+# Set client update server 
+
+defaults write /Library/Preferences/ManagedInstalls InstallAppleSoftwareUpdates True
+
+# Set SoftwareUpdate Catalog 
+
+
+# Set Basic AuthV
+
+defaults write $ROOT_PREFS AdditionalHttpHeaders -array "Authorization: Basic $BASIC_AUTH"
+
+# Set basic auth hash
+
+BASIC_AUTH="base64encodedpassword"
+
+# Log to syslog
+
+defaults write $MUNKI_PREFS LogToSyslog -bool true
+
+# Change default log location
+
+[ -d $LOGDIR ] || mkdir -p $LOGDIR 
+touch $LOGDIR/Install.log
+defaults write $MUNKI_PREFS LogFile $LOGDIR/managedsoftwareupdate.log
+
+# Change help URL for Software Centre
+
+# Add icon to Dock if dockutil available
+
+if [ -f /usr/local/bin/dockutil ]; then
+  /usr/local/bin/dockutil --add "/Applications/Managed Software Center.app" \
+                          --position beginning \
+                          --label "Managed Software Center" \
+                          --allhomes \
+                          --no-restart
+fi

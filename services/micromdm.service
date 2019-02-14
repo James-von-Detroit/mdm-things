@@ -1,0 +1,16 @@
+[Unit]
+Description=PH microMDM server
+Documentation=https://github.com/micromdm/micromdm
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/micromdm serve \
+	-server-url=DOMAIN \
+	-api-key MySecretAPIKey \
+	-filerepo /path/to/repo \
+	-tls-cert '/path/to/crt/file' \
+	-tls-key '/path/to/key/file'
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

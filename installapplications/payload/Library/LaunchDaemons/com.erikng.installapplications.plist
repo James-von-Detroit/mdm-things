@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>com.erikng.installapplications</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/usr/bin/python</string>
+		<string>/Library/Application Support/installapplications/installapplications.py</string>
+		<string>--jsonurl</string>
+		<string>https://raw.githubusercontent.com/christianbermejo/mdm-things/master/installapplications/bootstrap/bootstrap.json</string>
+		<!-- <string>--iapath</string> -->
+		<!-- <string>/Library/Application Support/installapplications</string> -->
+		<!-- <string>--laidentifier</string> -->
+		<!-- <string>com.erikng.installapplications</string> -->
+		<!-- <string>--ldidentifier</string> -->
+		<!-- <string>com.erikng.installapplications</string> -->
+		<string>--depnotify</string>
+		<!-- <string>DEPNotifySkipStatus</string> -->
+		<!-- <string>Command: WindowTitle: Configuration in Progress</string> -->
+		<!-- <string>Command: NotificationOn:</string> -->
+		<string>Command: MainTitle: Setting Things Up...</string>
+		<string>Command: MainText: IT is setting up your Mac with our suite of software and \n security policies. This process could take up to 30 minutes so don&apos;t restart \n or shutdown your computer until we are finished. \n \n IT Services Team</string>
+		<string>Status: Configuring Machine...</string>
+		<!-- <string>Command: WindowStyle: ActivateOnStep</string> -->
+		<string>DEPNotifyPath: /Applications/Utilities/DEPNotify.app</string>
+		<string>DEPNotifyArguments: -munki</string>
+		<!-- <string>DEPNotifyArguments: -munki -fullScreen</string> -->
+		<!-- <string>--reboot</string> -->
+		<!-- <string>--skip-validation</string> -->
+	</array>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>StandardOutPath</key>
+	<string>/var/log/installapplications.log</string>
+	<key>StandardErrorPath</key>
+	<string>/var/log/installapplications.log</string>
+</dict>
+</plist>
